@@ -14,6 +14,24 @@ export default function App() {
 		}));
 	}
 
+	// function handleDeleteProject(id) {
+	// 	setProjectsState((prevProjects) => ({
+	// 		...prevProjects,
+	// 		selectedProjectID: undefined,
+	// 		projects: prevProjects.projects.filter((project) => project.id !== id),
+	// 	}));
+	// }
+	// WE COULD USE THE ABOVE FUNCTION AS WELL, IN THAT WE JUST USED THE ID RECEIVED FROM THE SELECTED PROJECT COMPONENT. BUT WE USED ANOTHER APPROACH SHOWN BELOW.
+	// AS WE ALREADY KNOW THAT THE ONLY PROJECT THAT COULD BE DELETED IS THE selectedProject, AND WE HAVE THE ID OF THAT PROJECT, WE CAN JUST USE IT TO DELETE THE PROJECT FROM THE STATE.
+
+	function handleDeleteProject() {
+		setProjectsState((prevProjects) => ({
+			...prevProjects,
+			selectedProjectID: undefined,
+			projects: prevProjects.projects.filter((project) => project.id !== projectsState.selectedProjectID),
+		}));
+	}
+
 	function handleStartAddProject() {
 		setProjectsState((prevProjects) => ({
 			...prevProjects,
@@ -52,7 +70,12 @@ export default function App() {
 	} else if (projectsState.selectedProjectID === undefined) {
 		content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;
 	} else {
-		content = <SelectedProject project={projectsState.projects.find((project) => project.id === projectsState.selectedProjectID)} />;
+		content = (
+			<SelectedProject
+				project={projectsState.projects.find((project) => project.id === projectsState.selectedProjectID)}
+				onDeleteProject={handleDeleteProject}
+			/>
+		);
 	}
 
 	return (
