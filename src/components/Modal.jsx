@@ -10,6 +10,9 @@ const Modal = forwardRef(function Modal({ children, buttonCaption }, ref) {
 			open: () => {
 				dialog.current.showModal();
 			},
+			close: () => {
+				dialog.current.close();
+			},
 		};
 	});
 
@@ -21,7 +24,7 @@ const Modal = forwardRef(function Modal({ children, buttonCaption }, ref) {
 		>
 			{children}
 			<form method="dialog" className="mt-4 text-right">
-				<Button>{buttonCaption}</Button>
+				{buttonCaption && <Button>{buttonCaption}</Button>}
 			</form>
 		</dialog>,
 		document.getElementById("modal-root"),
