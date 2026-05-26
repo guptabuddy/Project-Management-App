@@ -34,7 +34,7 @@ export default function Tasks({ onAdd, onDelete, tasks }) {
 		<>
 			<Modal ref={modal} onClose={handleCancelDelete}>
 				<h2 className="text-xl font-bold text-stone-700 my-4">This will delete your Task.</h2>
-				{taskToDelete && <p className="text-stone-600 mb-4">Your task is:- "{taskToDelete.text}".</p>}
+				{taskToDelete && <p className="text-stone-600 mb-4 wrap-break-word">Your task is:- "{taskToDelete.text}".</p>}
 				<p>Are you sure you want to delete this Task? </p>
 
 				<div className="flex justify-end gap-4">
@@ -52,6 +52,7 @@ export default function Tasks({ onAdd, onDelete, tasks }) {
 					</button>
 				</div>
 			</Modal>
+
 			<section>
 				<h2 className="text-2xl font-bond text-stone-700 mb-4">TASKS</h2>
 				<NewTask onAdd={onAdd} />
@@ -61,10 +62,10 @@ export default function Tasks({ onAdd, onDelete, tasks }) {
 				{tasks.length > 0 && (
 					<ul className="p-4 mt-8 rounded-md bg-stone-100">
 						{tasks.map((task) => (
-							<li key={task.id} className="flex justify-between my-4">
-								<span>{task.text}</span>
+							<li key={task.id} className="flex justify-between gap-4 my-4">
+								<span className="w-4/5 min-w-0 wrap-break-word">{task.text}</span>
 								<button
-									className="text-stone-700 hover:text-red-500"
+									className="text-stone-700 text-sm text-right hover:text-red-500"
 									// onClick={() => onDelete(task.id)}
 									onClick={() => handleDeleteClick(task)}
 								>

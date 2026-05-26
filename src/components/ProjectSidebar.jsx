@@ -7,9 +7,9 @@ export default function ProjectSidebar({ onStartAddProject, projects, onSelectPr
 			<div>
 				<Button onClick={onStartAddProject}>+Add Projects</Button>
 			</div>
-			<ul className="mt-8">
+			<ul className="mt-8 overflow-hidden">
 				{projects.map((project) => {
-					let cssClasses = "w-full text-left px-2 py-1 rounded-sm my-1 hover:bg-stone-800 hover:text-stone-200";
+					let cssClasses = "w-full text-left px-2 py-1 rounded-sm my-1 hover:bg-stone-800 hover:text-stone-200 min-w-0 break-words";
 					if (project.id === selectedProjectId) {
 						cssClasses += " bg-stone-700 text-stone-200";
 					} else {

@@ -32,7 +32,7 @@ export default function NewTask({ onAdd }) {
 			{/* <button className="text-stone-700 hover:text-stone-950" onClick={() => onSave(enteredTask)}> */}
 
 			{/* Here we have to use the function which is defined in this component (handleClick) because we have to do 2 things, 1st we have to pass the task to the App component, 2nd we have to make the Input field empty so that the user can enter a new task. */}
-			<button className="text-stone-700 hover:text-stone-950" onClick={handleClick}>
+			<button className="text-stone-700 bg-stone-100 px-2 py-1 rounded-sm hover:text-stone-950 hover:bg-stone-200" onClick={handleClick}>
 				Add Task
 			</button>
 		</div>
